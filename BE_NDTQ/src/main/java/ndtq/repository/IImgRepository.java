@@ -1,6 +1,7 @@
 package ndtq.repository;
 
-import CaseStudy4.model.images;
+
+import ndtq.model.images;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

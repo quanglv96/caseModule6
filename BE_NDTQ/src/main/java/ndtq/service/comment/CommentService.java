@@ -1,11 +1,12 @@
 package ndtq.service.comment;
 
-import CaseStudy4.model.Comments;
-import CaseStudy4.model.Playlist;
-import CaseStudy4.model.Songs;
-import CaseStudy4.repository.ICommentRepository;
-import CaseStudy4.service.Songs.ISongService;
-import CaseStudy4.service.playlist.IPlaylistService;
+
+import ndtq.model.Comments;
+import ndtq.model.Playlist;
+import ndtq.model.Songs;
+import ndtq.repository.ICommentRepository;
+import ndtq.service.Songs.ISongService;
+import ndtq.service.playlist.IPlaylistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

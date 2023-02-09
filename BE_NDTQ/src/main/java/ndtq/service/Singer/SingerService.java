@@ -1,7 +1,8 @@
 package ndtq.service.Singer;
 
-import CaseStudy4.model.Singer;
-import CaseStudy4.repository.ISingerRepository;
+
+import ndtq.model.Singer;
+import ndtq.repository.ISingerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

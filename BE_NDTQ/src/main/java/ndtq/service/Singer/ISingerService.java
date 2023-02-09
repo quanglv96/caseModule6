@@ -1,7 +1,9 @@
 package ndtq.service.Singer;
 
-import CaseStudy4.model.Singer;
-import CaseStudy4.service.IGeneralService;
+
+
+import ndtq.model.Singer;
+import ndtq.service.IGeneralService;
 
 import java.util.List;
 

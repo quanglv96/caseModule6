@@ -1,8 +1,10 @@
 package ndtq.service.Songs;
 
-import CaseStudy4.model.Songs;
-import CaseStudy4.model.Users;
-import CaseStudy4.service.IGeneralService;
+
+
+import ndtq.model.Songs;
+import ndtq.model.Users;
+import ndtq.service.IGeneralService;
 
 import java.util.List;
 

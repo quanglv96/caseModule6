@@ -1,10 +1,11 @@
 package ndtq.service.playlist;
 
-import CaseStudy4.model.Playlist;
-import CaseStudy4.model.Tags;
-import CaseStudy4.model.Users;
-import CaseStudy4.repository.IPlaylistRepository;
-import CaseStudy4.service.Tags.ITagService;
+
+import ndtq.model.Playlist;
+import ndtq.model.Tags;
+import ndtq.model.Users;
+import ndtq.repository.IPlaylistRepository;
+import ndtq.service.Tags.ITagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
