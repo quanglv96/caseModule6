@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 
 @RestController
 @CrossOrigin("*")
@@ -26,5 +28,15 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Iterable<Users>> deleteUser(@PathVariable Long id) {
+        Optional<Users> usersOptional = userService.findById(id);
+        if(usersOptional.isPresent()) {
+            userService.remove(id);
+            return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+        }
+         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
