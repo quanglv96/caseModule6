@@ -62,19 +62,14 @@
           </div>
         </div>
       </div>
-
       <!-- Content -->
-
       <div class="body-content col col-lg-9 pe-4" >
-
         <div *ngFor="let r of resultSearch" class=" row mt-4">
-          <app-search-item-song *ngIf=""></app-search-item-song>
-          <app-search-item-user *ngif=""></app-search-item-user>
-          <app-search-item-playlist *ngIf=""></app-search-item-playlist>
+          <app-search-item-song *ngIf="r['audio']" ></app-search-item-song>
+          <app-search-item-user *ngIf="r['username']"></app-search-item-user>
+          <app-search-item-playlist *ngIf="r['description']"></app-search-item-playlist>
         </div>
       </div>
-
-
     </div>
   </div>
 </div>

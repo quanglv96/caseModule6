@@ -8,7 +8,7 @@ import {ChangePasswordComponent} from "./user-info/change-password/change-passwo
 
 const routes: Routes = [
   {path: 'auth', component: AuthComponent},
-  {path:'search/q=:text',component:SearchComponent}
+  {path:'search/q=:textSearch',component:SearchComponent},
   {path: 'auth', component: AuthComponent},
   {path: 'user-info', component: UserInfoComponent, children: [
       {path: 'edit', component: EditUserComponent},
