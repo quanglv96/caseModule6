@@ -57,3 +57,21 @@
 .active {
   text-decoration: none;
 }
+
+input.ng-invalid.ng-touched {
+  border-bottom: 1px solid #fc5757;
+  /*background-color: mistyrose;*/
+}
+
+input.ng-invalid.ng-touched.clear {
+  border-bottom: 1px solid white;
+  background-color: transparent;
+}
+
+.hide {
+  display: none;
+}
+
+.form-message {
+  color: #fc5757;
+}
