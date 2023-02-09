@@ -41,14 +41,11 @@
   width: 150px;
   padding: 12px 0;
   cursor: pointer;
+  background-color: #cccccc;
 }
 
 .user-info-tab.tab-item {
   background-color: white;
-}
-
-.tab-item {
-  background-color: #cccccc;
 }
 
 .tab-content {
