@@ -1,6 +1,7 @@
 package ndtq.service.Singer;
 
 
+
 import ndtq.model.Singer;
 import ndtq.service.IGeneralService;
 

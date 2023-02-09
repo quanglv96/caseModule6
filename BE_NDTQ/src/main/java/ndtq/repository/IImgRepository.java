@@ -1,10 +1,11 @@
 package ndtq.repository;
 
 
-import ndtq.model.Role;
+import ndtq.model.images;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IRoleRepository extends JpaRepository<Role,Long> {
+public interface IImgRepository extends JpaRepository<images,Long> {
+    int countByName(String name);
 }
