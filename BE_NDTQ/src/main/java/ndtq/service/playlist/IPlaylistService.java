@@ -1,8 +1,8 @@
 package ndtq.service.playlist;
 
-import CaseStudy4.model.Playlist;
-import CaseStudy4.model.Users;
-import CaseStudy4.service.IGeneralService;
+import ndtq.model.Playlist;
+import ndtq.model.Users;
+import ndtq.service.IGeneralService;
 
 
 public interface IPlaylistService extends IGeneralService<Playlist> {

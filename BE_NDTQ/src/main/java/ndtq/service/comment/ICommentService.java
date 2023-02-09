@@ -1,9 +1,10 @@
 package ndtq.service.comment;
 
-import CaseStudy4.model.Comments;
-import CaseStudy4.model.Playlist;
-import CaseStudy4.model.Songs;
-import CaseStudy4.service.IGeneralService;
+
+import ndtq.model.Comments;
+import ndtq.model.Playlist;
+import ndtq.model.Songs;
+import ndtq.service.IGeneralService;
 
 public interface ICommentService extends IGeneralService<Comments> {
     Iterable<Comments> findAllBySongsOrderByDateDesc(Songs songs);

@@ -1,7 +1,8 @@
 package ndtq.service.users;
 
-import CaseStudy4.model.Users;
-import CaseStudy4.repository.IUserRepository;
+
+import ndtq.model.Users;
+import ndtq.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

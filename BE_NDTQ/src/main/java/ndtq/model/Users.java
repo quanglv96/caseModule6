@@ -34,18 +34,9 @@ public class Users {
     @JoinColumn(name="id_role")
     private Role role;
     // ae tạo mới contructor theo logic cần sử dụng
-    @Transient
-    private MultipartFile image;
 
-    public Users(String username, String password, String name, String address, String email, String phone, MultipartFile image) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.address = address;
-        this.email = email;
-        this.phone = phone;
-        this.image = image;
-    }
+
+
 
     public Users(String username, String password, String name, String address, String phone) {
         this.username = username;
