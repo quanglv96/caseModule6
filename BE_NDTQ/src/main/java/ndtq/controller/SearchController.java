@@ -1,12 +1,13 @@
 package ndtq.controller;
 
-import CaseStudy4.model.Playlist;
-import CaseStudy4.model.Songs;
-import CaseStudy4.model.Users;
-import CaseStudy4.service.Singer.ISingerService;
-import CaseStudy4.service.Songs.ISongService;
-import CaseStudy4.service.playlist.IPlaylistService;
-import CaseStudy4.service.users.IUserService;
+
+import ndtq.model.Playlist;
+import ndtq.model.Songs;
+import ndtq.model.Users;
+import ndtq.service.Singer.ISingerService;
+import ndtq.service.Songs.ISongService;
+import ndtq.service.playlist.IPlaylistService;
+import ndtq.service.users.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,7 @@
 package ndtq.controller;
 
 
+import ndtq.model.Singer;
 import ndtq.service.Singer.ISingerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
