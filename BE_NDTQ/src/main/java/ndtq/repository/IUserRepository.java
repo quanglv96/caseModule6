@@ -17,11 +17,12 @@ public interface IUserRepository extends JpaRepository<Users, Long> {
     void updatePasswordByID(String newPass, Long id);
 
     Iterable<Users> findAllByNameContaining(String name);
+
     Optional<Users> findUserByName(String name);
+
     Optional<Users> findUserByUsername(String username);
 
-int countUsersByUsername(String name);
-
+    int countUsersByUsername(String name);
 
 
 }
