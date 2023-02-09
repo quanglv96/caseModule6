@@ -9,6 +9,6 @@ export class SearchService {
 
   constructor(private http: HttpClient) { }
   resultSearch(textSearch:string){
-    return this.http.get(`${API_URL}/search/search=${textSearch}`)
+    return this.http.get(`${API_URL}/search?search=${textSearch}`)
   }
 }

@@ -27,8 +27,18 @@ export class SearchComponent implements OnInit {
       const textSearch: string | null =param.get('textSearch');
       if(textSearch!=undefined){
         this.text=textSearch;
-        this.text=localStorage.setItem("textSearch",this.text);
+        localStorage.setItem("textSearch",this.text);
         this.result();
+      }else {
+        this.text=localStorage.getItem('textSearch')
+        // @ts-ignore
+        this.resultSearch=JSON.parse(localStorage.getItem('resultSearch'));
+        // @ts-ignore
+        this.resultSong=JSON.parse(localStorage.getItem('resultSong'));
+        // @ts-ignore
+        this.resultPlaylist=JSON.parse(localStorage.getItem('resultPlaylist'));
+        // @ts-ignore
+        this.resultUser=JSON.parse(localStorage.getItem('resultUser'));
       }
 
     })
@@ -39,25 +49,34 @@ export class SearchComponent implements OnInit {
       this.resultSong=data[0]
       this.resultPlaylist=data[1]
       this.resultUser=data[2]
+      localStorage.setItem('resultSearch',JSON.stringify(this.resultSearch));
+      localStorage.setItem('resultSong',JSON.stringify(this.resultSong));
+      localStorage.setItem('resultPlaylist',JSON.stringify(this.resultPlaylist));
+      localStorage.setItem('resultUser',JSON.stringify(this.resultUser));
     })
   }
   random(data:any){
-    let index=0;
+    let index:number=0;
     let list:any=[];
     let random:any=[]
     for (let i = 0; i < data.length; i++) {
-      for (let j = 0; j < data[i].length; j++) {
-        list.add(data[i][j]);
+      const demo=data[i]
+      for (let j = 0; j < demo.length; j++) {
+        list.push(demo[j]);
       }
     }
+    console.log("list "+list)
     const demoRandom:any=[];
-    while (index==list.length){
+    while (index!=list.length){
       demoRandom[index]=Math.floor(Math.random()*list.length);
-      random=new Set(demoRandom);
-      index=random.length
+      random=Array.from(new Set(demoRandom));
+      index=random.length;
     }
+    console.log('random '+random)
     for (let i = 0; i < random.length; i++) {
-      this.resultSearch.push(random[i]);
+      this.resultSearch.push(list[random[i]]);
     }
+    console.log('search' +this.resultSearch)
   }
+
 }
