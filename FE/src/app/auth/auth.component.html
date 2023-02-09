@@ -3,12 +3,12 @@
     <div class="col-md-4 offset-md-8">
       <div class="login-section">
         <div class="form-container p-4 d-flex flex-column justify-content-center">
-          <form *ngIf="isLogin">
+          <form *ngIf="isLogin" [formGroup]="formLogin" (ngSubmit)="login()" )>
             <h2 class="d-block text-center modal-header my-3 text-white">Login</h2>
             <div>
               <div class="form-group text-start">
                 <label class="auth-label my-1 text-white" for="username">Username:</label><br>
-                <input class="auth-input no-border-radius" name="username" type="text" id="username"
+                <input class="auth-input no-border-radius" name="username" formControlName="username" type="text" id="username"
                        placeholder="Enter username" autocomplete="off">
                 <div>
                   <span class="form-message font-12 text-danger"></span>
@@ -16,7 +16,7 @@
               </div>
               <div class="form-group text-start">
                 <label class="auth-label my-1 text-white" for="password">Password:</label><br>
-                <input class="auth-input no-border-radius" name="password" type="password" id="password"
+                <input class="auth-input no-border-radius" name="password" formControlName="password" type="password" id="password"
                        placeholder="Enter password" autocomplete="off">
                 <div>
                   <span class="form-message font-12 text-danger"></span>

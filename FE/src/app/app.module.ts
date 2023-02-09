@@ -7,18 +7,22 @@ import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from "./service/dropdown.directive";
 import { AuthComponent } from './auth/auth.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DropdownDirective,
-    AuthComponent
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
