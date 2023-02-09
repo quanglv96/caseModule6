@@ -15,6 +15,7 @@ import { SearchItemUserComponent } from './search/search-item-user/search-item-u
 import { UserInfoComponent } from './user-info/user-info.component';
 import { EditUserComponent } from './user-info/edit-user/edit-user.component';
 import { ChangePasswordComponent } from './user-info/change-password/change-password.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ChangePasswordComponent } from './user-info/change-password/change-pass
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
