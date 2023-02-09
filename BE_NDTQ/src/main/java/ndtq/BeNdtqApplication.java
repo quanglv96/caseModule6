@@ -1,4 +1,4 @@
-package com.example.be_ndtq;
+package ndtq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
