@@ -2,7 +2,6 @@ package ndtq.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -35,26 +34,25 @@ public class Songs {
             inverseJoinColumns = {@JoinColumn(name = "id_tags")})
     private List<Tags> tagsList;
     private long views;
-    private long likes;
-    @Transient
-    private MultipartFile mp3;
-    @Transient
-    private MultipartFile image;
+    @OneToMany(targetEntity = Tags.class)
+    @JoinTable( name = "like_user_song",joinColumns = {@JoinColumn(name = "id_song")},
+            inverseJoinColumns = {@JoinColumn(name = "id_user")})
+    private List<Users> userLikeSong;
+
 @Transient
 private String listTag;
 @Transient
 private String listSinger;
-    public Songs(String name, List<Singer> singerList, String composer, LocalDate date, List<Tags> tagsList, MultipartFile mp3, MultipartFile image) {
+    public Songs(String name, List<Singer> singerList, String composer, LocalDate date, List<Tags> tagsList) {
         this.name = name;
         this.singerList = singerList;
         this.composer = composer;
         this.date = date;
         this.tagsList = tagsList;
-        this.mp3 = mp3;
-        this.image = image;
+
     }
 
-    public Songs(Long id, String name, String audio, String avatar, Users users, List<Singer> singerList, String composer, LocalDate date, List<Tags> tagsList, long views, long likes) {
+    public Songs(Long id, String name, String audio, String avatar, Users users, List<Singer> singerList, String composer, LocalDate date, List<Tags> tagsList, long views, List<Users> userLikeSong) {
         this.id = id;
         this.name = name;
         this.audio = audio;
@@ -65,13 +63,13 @@ private String listSinger;
         this.date = date;
         this.tagsList = tagsList;
         this.views = views;
-        this.likes = likes;
+        this.userLikeSong = userLikeSong;
     }
 
     public Songs() {
     }
 
-    public Songs(String name, String audio, String avatar, Users users, List<Singer> singerList, String composer, LocalDate date, List<Tags> tagsList, long views, long likes) {
+    public Songs(String name, String audio, String avatar, Users users, List<Singer> singerList, String composer, LocalDate date, List<Tags> tagsList, long views, List<Users> userLikeSong) {
         this.name = name;
         this.audio = audio;
         this.avatar = avatar;
@@ -81,7 +79,7 @@ private String listSinger;
         this.date = date;
         this.tagsList = tagsList;
         this.views = views;
-        this.likes = likes;
+        this.userLikeSong = userLikeSong;
     }
 
 }
