@@ -1,7 +1,8 @@
 package ndtq.service.Role;
 
-import CaseStudy4.model.Role;
-import CaseStudy4.repository.IRoleRepository;
+
+import ndtq.model.Role;
+import ndtq.repository.IRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
