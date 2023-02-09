@@ -12,6 +12,7 @@ import { SearchItemSongComponent } from './search/search-item-song/search-item-s
 import { SearchItemPlaylistComponent } from './search/search-item-playlist/search-item-playlist.component';
 import { SearchItemUserComponent } from './search/search-item-user/search-item-user.component';
 import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

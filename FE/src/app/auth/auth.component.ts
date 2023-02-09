@@ -4,6 +4,7 @@ import {
   faSquareFacebook
 } from "@fortawesome/free-brands-svg-icons";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../service/user/user.service";
 
 @Component({
   selector: 'app-auth',
@@ -27,7 +28,8 @@ export class AuthComponent implements OnInit {
     phoneNumber: ['', {validators: [Validators.required, this.phoneValidator.bind(this)], updateOn: 'blur'}]
   })
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private userService:UserService){
   }
 
   ngOnInit() {
@@ -93,7 +95,12 @@ export class AuthComponent implements OnInit {
         control?.markAsTouched({ onlySelf: true });
       });
     } else {
-      // ae code login ở đây
+      this.userService.login(this.loginForm.get('username')?.value,this.loginForm.get('password')?.value).subscribe(()=>{
+        alert("Login Successful")
+      },(error:any)=>{
+        console.log(error)
+        alert(error['error']);
+      })
     }
   }
 }
