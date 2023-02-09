@@ -1,7 +1,7 @@
 package ndtq.service.Tags;
 
-import CaseStudy4.model.Tags;
-import CaseStudy4.repository.ITagRepository;
+import ndtq.model.Tags;
+import ndtq.repository.ITagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

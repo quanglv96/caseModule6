@@ -1,8 +1,9 @@
 package ndtq.repository;
 
-import CaseStudy4.model.Comments;
-import CaseStudy4.model.Playlist;
-import CaseStudy4.model.Songs;
+
+import ndtq.model.Comments;
+import ndtq.model.Playlist;
+import ndtq.model.Songs;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

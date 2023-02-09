@@ -1,12 +1,12 @@
 package ndtq.service.Songs;
 
-import CaseStudy4.model.Singer;
-import CaseStudy4.model.Songs;
-import CaseStudy4.model.Tags;
-import CaseStudy4.model.Users;
-import CaseStudy4.repository.ISongRepository;
-import CaseStudy4.service.Singer.ISingerService;
-import CaseStudy4.service.Tags.ITagService;
+import ndtq.model.Singer;
+import ndtq.model.Songs;
+import ndtq.model.Tags;
+import ndtq.model.Users;
+import ndtq.repository.ISongRepository;
+import ndtq.service.Singer.ISingerService;
+import ndtq.service.Tags.ITagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
