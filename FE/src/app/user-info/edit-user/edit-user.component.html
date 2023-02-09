@@ -1,0 +1,48 @@
+<form class="user-info-form info-form show mt-3">
+  <div class="input-section row">
+    <div class="input-left col col-3">
+      <div class="modal-image">
+        <img class="modal-img user-img-info" src="/assets/img/white.png" alt="">
+        <button class="upload-box upload-btn-info p-1">
+          <span onclick="openUpload('.user-img-intput')" class="py-2 px-2">
+            <i class="me-1 fa-solid fa-camera"></i>
+            <span>Upload image</span>
+          </span>
+          <input onchange="replaceImg(this, '.user-img-info')" class="user-img-intput" type="file" hidden>
+        </button>
+      </div>
+    </div>
+    <div class="input-right col col-9">
+      <div class="row">
+        <div class="col col-6">
+          <div class="form-group mb-2 disable">
+            <label class="modal-label my-1" for="i-username">Username:</label><br>
+            <input class="modal-input" value="Truong" name="username" type="text" id="i-username" placeholder="Username" disabled>
+          </div>
+          <div class="form-group mb-2">
+            <label class="modal-label my-1" for="i-name">Name:</label><br>
+            <input class="modal-input" name="name" type="text" id="i-name" placeholder="Name">
+          </div>
+          <div class="form-group mb-2">
+            <label class="modal-label my-1" for="i-address">Address:</label><br>
+            <input class="modal-input" name="address" type="text" id="i-address" placeholder="Address">
+          </div>
+        </div>
+        <div class="col col-6">
+          <div class="form-group mb-2">
+            <label class="modal-label my-1" for="i-email">Email:</label><br>
+            <input class="modal-input" name="email" type="text" id="i-email" placeholder="Email">
+          </div>
+          <div class="form-group mb-2">
+            <label class="modal-label my-1" for="i-phone_number">Phone number:</label><br>
+            <input class="modal-input" name="phone_number" type="text" id="i-phone_number" placeholder="Phone number">
+          </div>
+        </div>
+      </div>
+      <div class="submit-section text-end">
+        <button class="user-info-btn btn btn-sm btn-danger m-0 no-border-radius" type="reset">Clear</button>
+        <button class="user-info-btn btn btn-sm btn-dark m-0 no-border-radius" type="button">Save change</button>
+      </div>
+    </div>
+  </div>
+</form>

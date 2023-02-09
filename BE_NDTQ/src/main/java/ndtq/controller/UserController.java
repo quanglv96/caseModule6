@@ -24,7 +24,7 @@ public class UserController {
         Optional<Users> users = iUserRepository.findUserByUsername(username);
         if (users.isPresent()) {
             if (Objects.equals(pass, users.get().getPassword())) {
-                return new ResponseEntity<>(users, HttpStatus.OK);
+                return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 return new ResponseEntity<>("Wrong Password", HttpStatus.NOT_FOUND);
             }
