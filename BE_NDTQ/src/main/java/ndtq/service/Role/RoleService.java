@@ -1,6 +1,5 @@
 package ndtq.service.Role;
 
-
 import ndtq.model.Role;
 import ndtq.repository.IRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;

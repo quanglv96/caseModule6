@@ -1,9 +1,10 @@
 package ndtq.controller;
 
-import CaseStudy4.model.Comments;
-import CaseStudy4.service.Songs.ISongService;
-import CaseStudy4.service.comment.ICommentService;
-import CaseStudy4.service.playlist.IPlaylistService;
+
+import ndtq.model.Comments;
+import ndtq.service.Songs.ISongService;
+import ndtq.service.comment.ICommentService;
+import ndtq.service.playlist.IPlaylistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
