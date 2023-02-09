@@ -1,7 +1,8 @@
 package ndtq.service.users;
 
-import CaseStudy4.model.Users;
-import CaseStudy4.service.IGeneralService;
+
+import ndtq.model.Users;
+import ndtq.service.IGeneralService;
 
 import java.util.Optional;
 

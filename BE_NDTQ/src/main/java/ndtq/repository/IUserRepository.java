@@ -1,6 +1,6 @@
 package ndtq.repository;
 
-import CaseStudy4.model.Users;
+import ndtq.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,11 +17,12 @@ public interface IUserRepository extends JpaRepository<Users, Long> {
     void updatePasswordByID(String newPass, Long id);
 
     Iterable<Users> findAllByNameContaining(String name);
+
     Optional<Users> findUserByName(String name);
+
     Optional<Users> findUserByUsername(String username);
 
-int countUsersByUsername(String name);
-
+    int countUsersByUsername(String name);
 
 
 }

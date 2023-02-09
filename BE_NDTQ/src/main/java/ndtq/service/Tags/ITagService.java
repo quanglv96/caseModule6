@@ -1,11 +1,11 @@
 package ndtq.service.Tags;
 
-import CaseStudy4.model.Tags;
-import CaseStudy4.service.IGeneralService;
+import ndtq.model.Tags;
+import ndtq.service.IGeneralService;
 
 import java.util.List;
 
-public interface ITagService extends IGeneralService <Tags> {
+public interface ITagService extends IGeneralService<Tags> {
     Iterable<Tags> StringToListObj(List<String> listTag);
     void saveListTag(List<String> listTag);
     void addSongTag(Long idSong, Long idTag);
