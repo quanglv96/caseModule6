@@ -7,10 +7,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SearchComponent implements OnInit{
   search: [] = []
-
+  resultSearch: string[]=[];
 
   ngOnInit(): void {
+    localStorage.getItem("abc");
   }
   constructor() {
+
   }
  }
