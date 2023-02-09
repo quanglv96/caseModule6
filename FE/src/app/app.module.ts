@@ -12,6 +12,9 @@ import { SearchComponent } from './search/search.component';
 import { SearchItemSongComponent } from './search/search-item-song/search-item-song.component';
 import { SearchItemPlaylistComponent } from './search/search-item-playlist/search-item-playlist.component';
 import { SearchItemUserComponent } from './search/search-item-user/search-item-user.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { EditUserComponent } from './user-info/edit-user/edit-user.component';
+import { ChangePasswordComponent } from './user-info/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { SearchItemUserComponent } from './search/search-item-user/search-item-u
     SearchItemSongComponent,
     SearchItemPlaylistComponent,
     SearchItemUserComponent,
+    UserInfoComponent,
+    EditUserComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
