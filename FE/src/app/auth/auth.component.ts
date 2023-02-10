@@ -5,6 +5,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../service/user/user.service";
+import {User} from "../model/User";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth',
@@ -12,9 +14,9 @@ import {UserService} from "../service/user/user.service";
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  faFacebook = faSquareFacebook;
-  faGoogle = faGooglePlusG;
+  username: string[] = []
   isLogin = true
+  user?: User;
 
   loginForm: FormGroup = this.formBuilder.group({
     username: ['', {validators: Validators.required, updateOn: 'blur'}],
@@ -22,20 +24,26 @@ export class AuthComponent implements OnInit {
   })
 
   registerForm: FormGroup = this.formBuilder.group({
-    username: ['', {validators: Validators.required, updateOn: 'blur'}],
+    username: ['', {validators: [Validators.required, this.existUsernameValidator.bind(this)], updateOn: 'blur'}],
     password: ['', {validators: [Validators.required, Validators.minLength(6)], updateOn: 'blur'}],
     confirmPassword: ['', {validators: [Validators.required, this.confirmPassValidator.bind(this)], updateOn: 'blur'}],
-    phoneNumber: ['', {validators: [Validators.required, this.phoneValidator.bind(this)], updateOn: 'blur'}]
+    phone: ['', {validators: [Validators.required, this.phoneValidator.bind(this)], updateOn: 'blur'}]
   })
 
   constructor(private formBuilder: FormBuilder,
-              private userService:UserService){
+              private userService:UserService,
+              private router: Router){
   }
 
   ngOnInit() {
     this.registerForm.controls['password'].valueChanges.subscribe(
       () => {
         this.registerForm.controls['confirmPassword'].updateValueAndValidity();
+      }
+    )
+    this.userService.getUsername().subscribe(
+      data => {
+        this.username = data;
       }
     )
   }
@@ -77,6 +85,13 @@ export class AuthComponent implements OnInit {
     return null
   }
 
+  existUsernameValidator(control: FormControl): {[s: string]: boolean} | null {
+    if (this.username?.includes(control.value)) {
+      return {'usernameExist': true}
+    }
+    return null;
+  }
+
   onRegister() {
     if (this.registerForm.invalid) {
       Object.keys(this.registerForm.controls).forEach(field => {
@@ -84,7 +99,14 @@ export class AuthComponent implements OnInit {
         control?.markAsTouched({ onlySelf: true });
       });
     } else {
-      // ae code login ở đây
+      this.user = this.registerForm.value
+      this.userService.register(this.user).subscribe(data => {
+        alert("dang ky thanh cong")
+        this.switchToLogin()
+        this.loginForm.patchValue(data)
+      }, error => {
+        alert("tai khoan da ton tai")
+      })
     }
   }
 

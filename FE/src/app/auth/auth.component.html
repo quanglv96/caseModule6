@@ -79,6 +79,11 @@
                         && registerForm.get('username')!.touched" class="form-message font-12">
                         Username must not be left blank
                   </span>
+                  <span *ngIf="registerForm.get('username')!.errors !== null
+                        && registerForm.get('username')!.errors!['usernameExist']
+                        && registerForm.get('username')!.touched" class="form-message font-12">
+                        Username already exist
+                  </span>
                 </div>
               </div>
               <div class="form-group text-start text-white">
