@@ -54,9 +54,9 @@ public class UserService implements IUserService {
 
     @Override
     public Boolean checkUsername(String name) {
-        if(iUserRepository.countUsersByUsername(name)>0){
+        if (iUserRepository.countUsersByUsername(name) > 0) {
             return true;
         }
-       return  false;
+       return false;
     }
 }

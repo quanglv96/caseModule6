@@ -33,6 +33,10 @@ public class SongController {
     @Autowired
     private IUserService userService;
 
+    @PostMapping("/listNewSongs")
+    public ResponseEntity<Iterable<Songs>> listNewSongsByDate() {
+        return new ResponseEntity<>(iSongService.listNewSongs(), HttpStatus.OK);
+    }
 }
 
 
