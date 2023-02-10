@@ -3,23 +3,39 @@
     <div class="col-md-4 offset-md-8">
       <div class="login-section">
         <div class="form-container p-4 d-flex flex-column justify-content-center">
-          <form *ngIf="isLogin">
+          <form *ngIf="isLogin" [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <h2 class="d-block text-center modal-header my-3 text-white">Login</h2>
             <div>
               <div class="form-group text-start">
                 <label class="auth-label my-1 text-white" for="username">Username:</label><br>
-                <input class="auth-input no-border-radius" name="username" type="text" id="username"
-                       placeholder="Enter username" autocomplete="off">
-                <div>
-                  <span class="form-message font-12 text-danger"></span>
+                <input (input)="clearValid($event, loginUsername)" (blur)="checkValid($event, loginUsername)"
+                       class="auth-input no-border-radius text-white" name="username" type="text" id="username"
+                       placeholder="Enter username" autocomplete="off" formControlName="username">
+                <div #loginUsername>
+                  <span *ngIf="loginForm.get('username')!.errors !== null
+                        && loginForm.get('username')!.errors!['required']
+                        && loginForm.get('username')!.touched" class="form-message font-12">
+                        Username must not be left blank
+                  </span>
                 </div>
               </div>
               <div class="form-group text-start">
                 <label class="auth-label my-1 text-white" for="password">Password:</label><br>
-                <input class="auth-input no-border-radius" name="password" type="password" id="password"
-                       placeholder="Enter password" autocomplete="off">
+                <input class="auth-input no-border-radius text-white" name="password" type="password" id="password"
+                       placeholder="Enter password" autocomplete="off" formControlName="password">
                 <div>
-                  <span class="form-message font-12 text-danger"></span>
+                  <span class="form-message font-12"
+                        *ngIf="loginForm.get('password')!.errors !== null
+                        && loginForm.get('password')!.errors!['required']
+                        && loginForm.get('password')!.touched">
+                        Password must not be left blank
+                  </span>
+                  <span class="form-message font-12"
+                        *ngIf="loginForm.get('password')!.errors !== null
+                        && loginForm.get('password')!.errors!['minlength']
+                        && loginForm.get('password')!.touched">
+                        Must be at least 6 character
+                  </span>
                 </div>
               </div>
               <div class="form-group d-flex justify-content-between mt-2">
@@ -38,51 +54,88 @@
               <h6 style="font-size: 13.5px;" class="text-center mb-0 text-white">Or</h6>
               <p class="text-center font-12 m-0 text-white">Login with social media</p>
               <div class="social-media d-flex justify-content-center mb-3" style="font-size: 30px">
-                <div class="me-2 social-item text-white"><fa-icon [icon]="faFacebook"></fa-icon></div>
-                <div class="ms-2 social-item text-white"><fa-icon [icon]="faGoogle"></fa-icon></div>
+                <div class="me-2 social-item text-white"><i class="fa-brands fa-facebook"></i></div>
+                <div class="ms-2 social-item text-white"><i class="fa-brands fa-google"></i></div>
               </div>
             </div>
             <div class="text-center">
-              <span class="text-white">Not a member? <a class="text-primary pointer" (click)="switchToRegister()">Register here</a></span>
+              <span class="text-white font-14">Not a member? <a class="text-primary pointer" (click)="switchToRegister()">Register here</a></span>
             </div>
           </form>
 
-          <form id="register-form" class="modal-tab-other" *ngIf="!isLogin">
+          <form id="register-form" class="modal-tab-other" *ngIf="!isLogin"
+                [formGroup]="registerForm" (ngSubmit)="onRegister()">
             <h2 class="d-block text-center modal-header my-3 text-white">Register</h2>
             <div class="modal-body p-0 mb-3">
               <div class="form-group text-start">
                 <label class="auth-label my-1 text-white" for="c-username">Username:</label><br>
-                <input class="auth-input no-border-radius text-white" name="username" type="text" id="c-username"
-                       placeholder="Enter username" autocomplete="off">
-                <div>
-                  <span class="form-message font-12 text-danger">
+                <input (input)="clearValid($event, registerUsername)" (blur)="checkValid($event, registerUsername)"
+                       class="auth-input no-border-radius text-white" name="username" type="text" id="c-username"
+                       placeholder="Enter username" autocomplete="off" formControlName="username">
+                <div #registerUsername>
+                  <span *ngIf="registerForm.get('username')!.errors !== null
+                        && registerForm.get('username')!.errors!['required']
+                        && registerForm.get('username')!.touched" class="form-message font-12">
+                        Username must not be left blank
                   </span>
                 </div>
               </div>
               <div class="form-group text-start text-white">
                 <label class="auth-label my-1 text-white" for="c-password">Password:</label><br>
-                <input class="auth-input no-border-radius text-white" name="password" type="password" id="c-password"
-                       placeholder="Enter password" autocomplete="off">
-                <div>
-                  <span class="form-message font-12 text-danger">
+                <input (input)="clearValid($event, registerPassword)" (blur)="checkValid($event, registerPassword)"
+                       class="auth-input no-border-radius text-white" name="password" type="password" id="c-password"
+                       placeholder="Enter password" autocomplete="off" formControlName="password">
+                <div #registerPassword>
+                  <span class="form-message font-12"
+                        *ngIf="registerForm.get('password')!.errors !== null
+                        && registerForm.get('password')!.errors!['required']
+                        && registerForm.get('password')!.touched">
+                        Password must not be left blank
+                  </span>
+                  <span class="form-message font-12"
+                        *ngIf="registerForm.get('password')!.errors !== null
+                        && registerForm.get('password')!.errors!['minlength']
+                        && registerForm.get('password')!.touched">
+                        Must be at least 6 character
                   </span>
                 </div>
               </div>
               <div class="form-group text-start">
                 <label class="auth-label my-1 text-white" for="re-password">Re-password:</label><br>
-                <input class="auth-input no-border-radius text-white" name="re-password" type="password" id="re-password"
-                       placeholder="Enter confirm password" autocomplete="off">
-                <div>
-                  <span class="form-message font-12 text-danger">
+                <input (input)="clearValid($event, confirmPassword)" (blur)="checkValid($event, confirmPassword)"
+                       class="auth-input no-border-radius text-white" name="re-password" type="password" id="re-password"
+                       placeholder="Enter confirm password" autocomplete="off" formControlName="confirmPassword">
+                <div #confirmPassword>
+                  <span class="form-message font-12"
+                        *ngIf="registerForm.get('confirmPassword')!.errors !== null
+                        && registerForm.get('confirmPassword')!.errors!['notMatch']
+                        && registerForm.get('confirmPassword')!.touched">
+                        Confirm password must be matched
+                  </span>
+                  <span class="form-message font-12"
+                        *ngIf="registerForm.get('confirmPassword')!.errors !== null
+                        && registerForm.get('confirmPassword')!.errors!['required']
+                        && registerForm.get('confirmPassword')!.touched">
+                        Confirm password must not be left blank
                   </span>
                 </div>
               </div>
               <div class="form-group text-start">
-                <label class="auth-label my-1 text-white" for="email">Email:</label><br>
-                <input class="auth-input no-border-radius text-white" name="email" type="text" id="email"
-                       placeholder="Enter email" autocomplete="off">
-                <div>
-                  <span class="form-message font-12 text-danger">
+                <label class="auth-label my-1 text-white" for="phone_number">Phone number:</label><br>
+                <input (input)="clearValid($event, phoneNumber)" (blur)="checkValid($event, phoneNumber)" class="auth-input no-border-radius text-white" name="phone_number" type="text" id="phone_number"
+                       placeholder="Enter phone number" autocomplete="off" formControlName="phoneNumber">
+                <div #phoneNumber>
+                  <span class="form-message font-12"
+                        *ngIf="registerForm.get('phoneNumber')!.errors !== null
+                        && registerForm.get('phoneNumber')!.errors!['required']
+                        && registerForm.get('phoneNumber')!.touched">
+                        Phone number must not be left blank
+                  </span>
+                  <span class="form-message font-12"
+                        *ngIf="registerForm.get('phoneNumber')!.errors !== null
+                        && registerForm.get('phoneNumber')!.errors!['invalidPhoneNumber']
+                        && registerForm.get('phoneNumber')!.touched">
+                        Phone number must start with 84|0 follow by 3|5|7|8|9 follow by 8 number
                   </span>
                 </div>
               </div>
@@ -92,7 +145,7 @@
               <button class="form-btn form-btn-submit m-0" type="submit">Create account</button>
             </div>
             <div class="text-center mt-4">
-              <span class="text-white">Already have account? <a class="text-primary pointer" (click)="switchToLogin()">Login here</a></span>
+              <span class="text-white font-14">Already have account? <a class="text-primary pointer" (click)="switchToLogin()">Login here</a></span>
             </div>
           </form>
         </div>

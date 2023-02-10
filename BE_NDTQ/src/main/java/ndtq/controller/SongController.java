@@ -1,27 +1,29 @@
 package ndtq.controller;
 
 
-import ndtq.model.Songs;
-import ndtq.model.Users;
+import ndtq.model.*;
 import ndtq.service.Singer.ISingerService;
 import ndtq.service.Songs.ISongService;
 import ndtq.service.Tags.ITagService;
 import ndtq.service.comment.ICommentService;
 import ndtq.service.users.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Optional;
-
+import java.io.File;
+import java.time.LocalDate;
+import java.util.*;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/songs")
 public class SongController {
     @Autowired
-    private ISongService songService;
+    private ISongService iSongService;
     @Autowired
     private ISingerService singerService;
     @Autowired
@@ -31,29 +33,6 @@ public class SongController {
     @Autowired
     private IUserService userService;
 
-    @GetMapping()
-    public ResponseEntity<Iterable<Songs>> findAll() {
-        return new ResponseEntity<>(songService.findAll(), HttpStatus.OK);
-    }
-
-    @GetMapping("{id}")
-    public ResponseEntity<Optional<Songs>> findById(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(songService.findById(id), HttpStatus.OK);
-    }
-    @PostMapping()
-    public ResponseEntity<?> save(@RequestBody Songs songs){
-        return new ResponseEntity<>(songService.save(songs), HttpStatus.CREATED);
-    }
-    @PutMapping("{id}")
-    public ResponseEntity<?> update(@RequestBody Songs songs, @PathVariable("id") Long id){
-        songs.setId(id);
-        return new ResponseEntity<>(songService.save(songs),HttpStatus.OK);
-    }
-    @DeleteMapping("{id}")
-    public  ResponseEntity<?> delete(@PathVariable("id") Long id){
-        songService.remove(id);
-        return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.OK);
-    }
 }
 
 

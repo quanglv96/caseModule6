@@ -1,9 +1,9 @@
 package ndtq.service.playlist;
 
+
 import ndtq.model.Playlist;
 import ndtq.model.Users;
 import ndtq.service.IGeneralService;
-
 
 public interface IPlaylistService extends IGeneralService<Playlist> {
     Iterable<Playlist> listTrending();

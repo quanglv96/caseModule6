@@ -1,5 +1,6 @@
 package ndtq.service.Singer;
 
+
 import ndtq.model.Singer;
 import ndtq.repository.ISingerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

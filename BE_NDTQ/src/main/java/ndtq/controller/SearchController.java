@@ -62,6 +62,4 @@ public class SearchController {
     public ResponseEntity<Iterable<Songs>> findSongBySinger(@RequestParam("idSinger") Long idSinger){
         return new ResponseEntity<>(iSongService.findAllBySingerList(idSinger),HttpStatus.OK);
     }
-
-
 }

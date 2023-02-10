@@ -6,19 +6,39 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from "./service/dropdown.directive";
 import { AuthComponent } from './auth/auth.component';
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { SearchComponent } from './search/search.component';
+import { SearchItemSongComponent } from './search/search-item-song/search-item-song.component';
+import { SearchItemPlaylistComponent } from './search/search-item-playlist/search-item-playlist.component';
+import { SearchItemUserComponent } from './search/search-item-user/search-item-user.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { EditUserComponent } from './user-info/edit-user/edit-user.component';
+import { ChangePasswordComponent } from './user-info/change-password/change-password.component';
+import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DropdownDirective,
-    AuthComponent
+    AuthComponent,
+    SearchComponent,
+    SearchItemSongComponent,
+    SearchItemPlaylistComponent,
+    SearchItemUserComponent,
+    UserInfoComponent,
+    EditUserComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

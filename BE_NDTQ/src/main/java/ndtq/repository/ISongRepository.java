@@ -1,5 +1,6 @@
 package ndtq.repository;
 
+
 import ndtq.model.Songs;
 import ndtq.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,6 +29,7 @@ public interface ISongRepository extends JpaRepository<Songs, Long> {
     @Modifying
     @Query(value = "update Songs set views=(views+ 1)", nativeQuery = true)
     void setViewsAllSong();
+
     @Modifying
     @Query(value = "select * from songs where id in (select id_song from song_singer  where id_singer= :id )", nativeQuery = true)
     Iterable<Songs> findAllBySingerList(Long id);
