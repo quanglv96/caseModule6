@@ -59,4 +59,8 @@ public class UserController {
         }
         return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
+    @GetMapping("{id}")
+    public ResponseEntity<Optional<Users>> findById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
+    }
 }
