@@ -21,13 +21,11 @@ public class Users {
     // bắt validate mật khẩu từ 6 đến 8 kí tự
     @Pattern(regexp = "^.{6,8}$", message ="Passwords are 6-8 characters long")
     private String password;
-    @NotNull
     private String name;
-    @NotNull
     private String address;
-    @Email(message = "Invalid email")
+//    @Email(message = "Invalid email")
     private String email;
-    @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})\\b", message = "10 digit phone number")
+//    @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})\\b", message = "10 digit phone number")
     private String phone;
     private String avatar;
     @OneToOne(targetEntity = Role.class)

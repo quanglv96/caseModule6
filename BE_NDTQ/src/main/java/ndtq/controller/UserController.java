@@ -2,6 +2,8 @@ package ndtq.controller;
 
 import ndtq.model.Users;
 import ndtq.repository.IUserRepository;
+import ndtq.service.users.IUserService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,8 @@ import java.util.Optional;
 @CrossOrigin("*")
 @RequestMapping("/users")
 public class UserController {
+    @Autowired
+    private IUserService userService;
     @Autowired
     private IUserRepository iUserRepository;
 
@@ -30,6 +34,29 @@ public class UserController {
         }else {
             return new ResponseEntity<>("Username is not Present", HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping()
+    public ResponseEntity<Iterable<Users>> getAllUser() {
+        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping()
+    public ResponseEntity<Users> createUser(@RequestBody Users user) {
+        if(userService.checkUsername(user.getUsername())) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Users> updateUser(@PathVariable Long id,
+                                            @RequestBody Users user) {
+        Optional<Users> users = userService.findById(id);
+        if(users.isPresent()) {
+            user.setId(users.get().getId());
+            return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 }
