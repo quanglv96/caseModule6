@@ -14,8 +14,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  faFacebook = faSquareFacebook;
-  faGoogle = faGooglePlusG;
+  username: string[] = []
   isLogin = true
   user?: User;
 
@@ -25,7 +24,7 @@ export class AuthComponent implements OnInit {
   })
 
   registerForm: FormGroup = this.formBuilder.group({
-    username: ['', {validators: Validators.required, updateOn: 'blur'}],
+    username: ['', {validators: [Validators.required, this.existUsernameValidator.bind(this)], updateOn: 'blur'}],
     password: ['', {validators: [Validators.required, Validators.minLength(6)], updateOn: 'blur'}],
     confirmPassword: ['', {validators: [Validators.required, this.confirmPassValidator.bind(this)], updateOn: 'blur'}],
     phone: ['', {validators: [Validators.required, this.phoneValidator.bind(this)], updateOn: 'blur'}]
@@ -40,6 +39,11 @@ export class AuthComponent implements OnInit {
     this.registerForm.controls['password'].valueChanges.subscribe(
       () => {
         this.registerForm.controls['confirmPassword'].updateValueAndValidity();
+      }
+    )
+    this.userService.getUsername().subscribe(
+      data => {
+        this.username = data;
       }
     )
   }
@@ -79,6 +83,13 @@ export class AuthComponent implements OnInit {
       return {'invalidPhoneNumber': true}
     }
     return null
+  }
+
+  existUsernameValidator(control: FormControl): {[s: string]: boolean} | null {
+    if (this.username?.includes(control.value)) {
+      return {'usernameExist': true}
+    }
+    return null;
   }
 
   onRegister() {
