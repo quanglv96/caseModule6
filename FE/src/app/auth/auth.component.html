@@ -21,9 +21,10 @@
               </div>
               <div class="form-group text-start">
                 <label class="auth-label my-1 text-white" for="password">Password:</label><br>
-                <input class="auth-input no-border-radius text-white" name="password" type="password" id="password"
+                <input (input)="clearValid($event, loginPassword)" (blur)="checkValid($event, loginPassword)"
+                       class="auth-input no-border-radius text-white" name="password" type="password" id="password"
                        placeholder="Enter password" autocomplete="off" formControlName="password">
-                <div>
+                <div #loginPassword>
                   <span class="form-message font-12"
                         *ngIf="loginForm.get('password')!.errors !== null
                         && loginForm.get('password')!.errors!['required']
@@ -77,6 +78,11 @@
                         && registerForm.get('username')!.errors!['required']
                         && registerForm.get('username')!.touched" class="form-message font-12">
                         Username must not be left blank
+                  </span>
+                  <span *ngIf="registerForm.get('username')!.errors !== null
+                        && registerForm.get('username')!.errors!['usernameExist']
+                        && registerForm.get('username')!.touched" class="form-message font-12">
+                        Username already exist
                   </span>
                 </div>
               </div>

@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   resultSong:Songs[]=[];
   resultPlaylist:Playlist[]=[];
   resultUser:User[]=[];
-  category:any;
+  category:string ='';
   resultContent: string='';
   statisticalContent: string='Search for tracks, artists, podcasts, and playlists.';
 
@@ -33,6 +33,7 @@ export class SearchComponent implements OnInit {
         this.text=textSearch;
         this.result();
         this.resultContent='result for "'+this.text+'"'
+        this.category='';
       }else {
         this.resultContent='';
         this.statisticalContent='Search for tracks, artists, podcasts, and playlists.';

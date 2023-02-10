@@ -8,4 +8,7 @@ const API_URL = `${environment.apiUrl}`;
 export class SongsService {
 
   constructor(private http: HttpClient) { }
+  findSongByUser(id:number){
+    return this.http.get(`${API_URL}/songs/listSongsByUser/${id}`)
+  }
 }

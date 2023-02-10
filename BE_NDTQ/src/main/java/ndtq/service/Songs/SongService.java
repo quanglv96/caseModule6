@@ -31,6 +31,10 @@ public class SongService implements ISongService {
     public Iterable<Songs> listTrending() {
         return isongRepository.findAllByOrderByViewsDesc();
     }
+    @Override
+    public Iterable<Songs> listTrendingAsc() {
+        return isongRepository.findAllByOrderByViewsAsc();
+    }
 
     @Override
     public Iterable<Songs> findAllByNameContaining(String name) {

@@ -37,6 +37,18 @@ public class SongController {
     public ResponseEntity<Iterable<Songs>> listNewSongsByDate() {
         return new ResponseEntity<>(iSongService.listNewSongs(), HttpStatus.OK);
     }
+    @PostMapping("/listSongsTrending")
+    public ResponseEntity<Iterable<Songs>> listSongsTrendingByView() {
+        return new ResponseEntity<>(iSongService.listTrending(), HttpStatus.OK);
+    }
+    @PostMapping("/listSongsTrendingAsc")
+    public ResponseEntity<Iterable<Songs>> listSongsTrendingByViewAsc() {
+        return new ResponseEntity<>(iSongService.listTrendingAsc(), HttpStatus.OK);
+    }
+    @GetMapping("/listSongsByUser/{id}")
+    ResponseEntity<Iterable<Songs>> listSongsByUser(@PathVariable("id") Long idUser) {
+        return new ResponseEntity<>(iSongService.findAllByUsers(userService.findById(idUser).get()), HttpStatus.OK);
+    }
 }
 
 

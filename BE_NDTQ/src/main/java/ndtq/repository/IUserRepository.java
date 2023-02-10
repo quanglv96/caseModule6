@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -26,5 +27,6 @@ public interface IUserRepository extends JpaRepository<Users, Long> {
 
     int countUsersByUsername(String name);
 
-
+    @Query(value = "select username from users", nativeQuery = true)
+    List<String> findAllUsername();
 }

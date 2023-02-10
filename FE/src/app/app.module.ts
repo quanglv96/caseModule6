@@ -1,4 +1,4 @@
-  import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,9 +15,13 @@ import { SearchItemUserComponent } from './search/search-item-user/search-item-u
 import { UserInfoComponent } from './user-info/user-info.component';
 import { EditUserComponent } from './user-info/edit-user/edit-user.component';
 import { ChangePasswordComponent } from './user-info/change-password/change-password.component';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { LibraryComponent } from './library/library.component';
-  import {FilterPipe} from "./service/pipe/filter.pipe";
+import { FilterPipe } from "./service/pipe/filter.pipe";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from "@angular/material/icon";
+import { SongItemComponent } from './library/song-item/song-item.component';
+import { PlaylistItemComponent } from './library/playlist-item/playlist-item.component';
 
 
 @NgModule({
@@ -34,6 +38,8 @@ import { LibraryComponent } from './library/library.component';
     EditUserComponent,
     ChangePasswordComponent,
     LibraryComponent,
+    SongItemComponent,
+    PlaylistItemComponent,
     FilterPipe
   ],
   imports: [
@@ -42,7 +48,9 @@ import { LibraryComponent } from './library/library.component';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

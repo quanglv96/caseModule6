@@ -5,10 +5,12 @@ import ndtq.repository.IUserRepository;
 import ndtq.service.users.IUserService;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -24,7 +26,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestParam("username") String username, @RequestParam("pass") String pass) {
-        Optional<Users> users = iUserRepository.findUserByUsername(username);
+        Optional<Users> users = userService.findUserByUsername(username);
         if (users.isPresent()) {
             if (Objects.equals(pass, users.get().getPassword())) {
                 return new ResponseEntity<>(users,HttpStatus.OK);
@@ -61,8 +63,12 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
+    @GetMapping("/usernames")
+    public ResponseEntity<List<String>> getAllUsername() {
+        return new ResponseEntity<>(userService.findAllUsername(), HttpStatus.OK);
+    }
     @GetMapping("{id}")
-    public ResponseEntity<Optional<Users>> getOneUser(@PathVariable Long id) {
+    public ResponseEntity<Optional<Users>> findById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
     }
 }
