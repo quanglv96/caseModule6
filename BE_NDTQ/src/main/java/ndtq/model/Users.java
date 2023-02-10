@@ -33,9 +33,6 @@ public class Users {
     private Role role;
     // ae tạo mới contructor theo logic cần sử dụng
 
-
-
-
     public Users(String username, String password, String name, String address, String phone) {
         this.username = username;
         this.password = password;

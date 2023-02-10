@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Data
-@AllArgsConstructor
 public class Songs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +38,6 @@ public class Songs {
             inverseJoinColumns = {@JoinColumn(name = "id_user")})
     private List<Users> userLikeSong;
 
-@Transient
-private String listTag;
-@Transient
-private String listSinger;
     public Songs(String name, List<Singer> singerList, String composer, LocalDate date, List<Tags> tagsList) {
         this.name = name;
         this.singerList = singerList;

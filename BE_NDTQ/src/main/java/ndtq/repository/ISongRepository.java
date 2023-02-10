@@ -26,6 +26,7 @@ public interface ISongRepository extends JpaRepository<Songs, Long> {
 
     Optional<Songs> findByName(String name);
 
+
     @Modifying
     @Query(value = "update Songs set views=(views+ 1)", nativeQuery = true)
     void setViewsAllSong();

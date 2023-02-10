@@ -10,7 +10,7 @@ export interface Playlist{
   avatar?:string;
   dateCreate?:Date;
   lastUpdate?:Date;
-  user?:User;
+  users?:User;
   songList?:Songs[]
   tagsList?:Tags[];
   views?:number;

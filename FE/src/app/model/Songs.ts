@@ -7,7 +7,7 @@ export interface Songs {
   name?:string
   audio?:string;
   avatar?:string;
-  user?:User;
+  users?:User;
   singerList?:Singer[];
   composer?:string;
   date?:Date;
