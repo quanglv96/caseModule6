@@ -101,9 +101,9 @@ export class AuthComponent implements OnInit {
     } else {
       this.user = this.registerForm.value
       this.userService.register(this.user).subscribe(data => {
-        alert("dang ky thanh cong")
-        this.switchToLogin()
-        this.loginForm.patchValue(data)
+          alert("dang ky thanh cong")
+          this.switchToLogin()
+          this.loginForm.patchValue(data)
       }, error => {
         alert("tai khoan da ton tai")
       })
