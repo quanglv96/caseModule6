@@ -106,8 +106,9 @@ export class AuthComponent implements OnInit {
         control?.markAsTouched({ onlySelf: true });
       });
     } else {
-      this.userService.login(this.loginForm.get('username')?.value,this.loginForm.get('password')?.value).subscribe(()=>{
+      this.userService.login(this.loginForm.get('username')?.value,this.loginForm.get('password')?.value).subscribe((data)=>{
         alert("Login Successful")
+        localStorage.setItem('id_user', data.id)
       },(error:any)=>{
         console.log(error)
         alert(error['error']);
