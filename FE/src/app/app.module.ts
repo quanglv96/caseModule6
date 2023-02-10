@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+  import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,7 @@ import { EditUserComponent } from './user-info/edit-user/edit-user.component';
 import { ChangePasswordComponent } from './user-info/change-password/change-password.component';
 import {HttpClientModule} from "@angular/common/http";
 import { LibraryComponent } from './library/library.component';
+  import {FilterPipe} from "./service/pipe/filter.pipe";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { LibraryComponent } from './library/library.component';
     EditUserComponent,
     ChangePasswordComponent,
     LibraryComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
