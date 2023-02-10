@@ -12,6 +12,9 @@ export class HeaderComponent{
   constructor(private route:Router) {
   }
     routeSearch(){
+      if(this.textSearch==undefined){
+        this.textSearch='';
+      }
       return this.route.navigateByUrl(`search/${this.textSearch}`)
     }
 }
