@@ -40,6 +40,7 @@ import { PlaylistItemComponent } from './library/playlist-item/playlist-item.com
     LibraryComponent,
     SongItemComponent,
     PlaylistItemComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
