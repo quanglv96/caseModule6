@@ -28,4 +28,8 @@ export class UserService {
   getAllUsers(): Observable<any> {
     return this.http.get(`${API_URL}/users`);
   }
+
+  findById(id: number): Observable<User> {
+    return this.http.get(`${API_URL}/users/${id}`)
+  }
 }
