@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Data
-@AllArgsConstructor
 public class Songs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
