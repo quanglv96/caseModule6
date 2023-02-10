@@ -17,6 +17,10 @@ import { EditUserComponent } from './user-info/edit-user/edit-user.component';
 import { ChangePasswordComponent } from './user-info/change-password/change-password.component';
 import {HttpClientModule} from "@angular/common/http";
 import { LibraryComponent } from './library/library.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from "@angular/material/icon";
+import { SongItemComponent } from './library/song-item/song-item.component';
+import { PlaylistItemComponent } from './library/playlist-item/playlist-item.component';
 
 
 @NgModule({
@@ -33,6 +37,8 @@ import { LibraryComponent } from './library/library.component';
     EditUserComponent,
     ChangePasswordComponent,
     LibraryComponent,
+    SongItemComponent,
+    PlaylistItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,9 @@ import { LibraryComponent } from './library/library.component';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
