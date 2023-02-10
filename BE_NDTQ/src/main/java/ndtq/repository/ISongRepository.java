@@ -16,6 +16,8 @@ import java.util.Optional;
 public interface ISongRepository extends JpaRepository<Songs, Long> {
     Iterable<Songs> findAllByOrderByViewsDesc();
 
+    Iterable<Songs> findAllByOrderByViewsAsc();
+
     Iterable<Songs> findAllByOrderByDateDesc();
 
     Iterable<Songs> findAllByUsers(Users users);
@@ -25,6 +27,8 @@ public interface ISongRepository extends JpaRepository<Songs, Long> {
     Optional<Songs> findById(Long id);
 
     Optional<Songs> findByName(String name);
+
+
 
     @Modifying
     @Query(value = "update Songs set views=(views+ 1)", nativeQuery = true)

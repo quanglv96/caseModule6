@@ -124,18 +124,18 @@
               <div class="form-group text-start">
                 <label class="auth-label my-1 text-white" for="phone_number">Phone number:</label><br>
                 <input (input)="clearValid($event, phoneNumber)" (blur)="checkValid($event, phoneNumber)" class="auth-input no-border-radius text-white" name="phone_number" type="text" id="phone_number"
-                       placeholder="Enter phone number" autocomplete="off" formControlName="phoneNumber">
+                       placeholder="Enter phone number" autocomplete="off" formControlName="phone">
                 <div #phoneNumber>
                   <span class="form-message font-12"
-                        *ngIf="registerForm.get('phoneNumber')!.errors !== null
-                        && registerForm.get('phoneNumber')!.errors!['required']
-                        && registerForm.get('phoneNumber')!.touched">
+                        *ngIf="registerForm.get('phone')!.errors !== null
+                        && registerForm.get('phone')!.errors!['required']
+                        && registerForm.get('phone')!.touched">
                         Phone number must not be left blank
                   </span>
                   <span class="form-message font-12"
-                        *ngIf="registerForm.get('phoneNumber')!.errors !== null
-                        && registerForm.get('phoneNumber')!.errors!['invalidPhoneNumber']
-                        && registerForm.get('phoneNumber')!.touched">
+                        *ngIf="registerForm.get('phone')!.errors !== null
+                        && registerForm.get('phone')!.errors!['invalidPhoneNumber']
+                        && registerForm.get('phone')!.touched">
                         Phone number must start with 84|0 follow by 3|5|7|8|9 follow by 8 number
                   </span>
                 </div>

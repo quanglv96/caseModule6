@@ -5,6 +5,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../service/user/user.service";
+import {User} from "../model/User";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth',
@@ -15,6 +17,7 @@ export class AuthComponent implements OnInit {
   faFacebook = faSquareFacebook;
   faGoogle = faGooglePlusG;
   isLogin = true
+  user?: User;
 
   loginForm: FormGroup = this.formBuilder.group({
     username: ['', {validators: Validators.required, updateOn: 'blur'}],
@@ -25,11 +28,12 @@ export class AuthComponent implements OnInit {
     username: ['', {validators: Validators.required, updateOn: 'blur'}],
     password: ['', {validators: [Validators.required, Validators.minLength(6)], updateOn: 'blur'}],
     confirmPassword: ['', {validators: [Validators.required, this.confirmPassValidator.bind(this)], updateOn: 'blur'}],
-    phoneNumber: ['', {validators: [Validators.required, this.phoneValidator.bind(this)], updateOn: 'blur'}]
+    phone: ['', {validators: [Validators.required, this.phoneValidator.bind(this)], updateOn: 'blur'}]
   })
 
   constructor(private formBuilder: FormBuilder,
-              private userService:UserService){
+              private userService:UserService,
+              private router: Router){
   }
 
   ngOnInit() {
@@ -84,7 +88,14 @@ export class AuthComponent implements OnInit {
         control?.markAsTouched({ onlySelf: true });
       });
     } else {
-      // ae code login ở đây
+      this.user = this.registerForm.value
+      this.userService.register(this.user).subscribe(data => {
+          alert("dang ky thanh cong")
+          this.switchToLogin()
+          this.loginForm.patchValue(data)
+      }, error => {
+        alert("tai khoan da ton tai")
+      })
     }
   }
 

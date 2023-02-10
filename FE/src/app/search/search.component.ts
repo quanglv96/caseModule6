@@ -11,12 +11,15 @@ import {User} from "../model/User";
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  search: [] = []
-  resultSearch: any[] = [];
+  search: [] = [];
   text:any;
+  resultSearch: any[] = [];
   resultSong:Songs[]=[];
   resultPlaylist:Playlist[]=[];
   resultUser:User[]=[];
+  category:any;
+  resultContent: string='';
+  statisticalContent: string='Search for tracks, artists, podcasts, and playlists.';
 
   constructor(private activatedRoute: ActivatedRoute, private searchService:SearchService ) {
 
@@ -24,21 +27,15 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
+      this.resultSearch=[];
       const textSearch: string | null =param.get('textSearch');
-      if(textSearch!=undefined){
+      if(textSearch!=''){
         this.text=textSearch;
-        localStorage.setItem("textSearch",this.text);
         this.result();
+        this.resultContent='result for "'+this.text+'"'
       }else {
-        this.text=localStorage.getItem('textSearch')
-        // @ts-ignore
-        this.resultSearch=JSON.parse(localStorage.getItem('resultSearch'));
-        // @ts-ignore
-        this.resultSong=JSON.parse(localStorage.getItem('resultSong'));
-        // @ts-ignore
-        this.resultPlaylist=JSON.parse(localStorage.getItem('resultPlaylist'));
-        // @ts-ignore
-        this.resultUser=JSON.parse(localStorage.getItem('resultUser'));
+        this.resultContent='';
+        this.statisticalContent='Search for tracks, artists, podcasts, and playlists.';
       }
 
     })
@@ -49,13 +46,12 @@ export class SearchComponent implements OnInit {
       this.resultSong=data[0]
       this.resultPlaylist=data[1]
       this.resultUser=data[2]
+      this.statisticalContent=`Found ${this.resultSong.length} Songs, ${this.resultUser.length} people, ${this.resultPlaylist.length} playlists`
       localStorage.setItem('resultSearch',JSON.stringify(this.resultSearch));
-      localStorage.setItem('resultSong',JSON.stringify(this.resultSong));
-      localStorage.setItem('resultPlaylist',JSON.stringify(this.resultPlaylist));
-      localStorage.setItem('resultUser',JSON.stringify(this.resultUser));
     })
   }
   random(data:any){
+
     let index:number=0;
     let list:any=[];
     let random:any=[]
@@ -65,18 +61,19 @@ export class SearchComponent implements OnInit {
         list.push(demo[j]);
       }
     }
-    console.log("list "+list)
     const demoRandom:any=[];
     while (index!=list.length){
       demoRandom[index]=Math.floor(Math.random()*list.length);
       random=Array.from(new Set(demoRandom));
       index=random.length;
     }
-    console.log('random '+random)
     for (let i = 0; i < random.length; i++) {
       this.resultSearch.push(list[random[i]]);
     }
-    console.log('search' +this.resultSearch)
+
   }
 
+  fillCategory(text: string) {
+    this.category=text;
+  }
 }
