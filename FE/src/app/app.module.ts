@@ -16,6 +16,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { EditUserComponent } from './user-info/edit-user/edit-user.component';
 import { ChangePasswordComponent } from './user-info/change-password/change-password.component';
 import {HttpClientModule} from "@angular/common/http";
+import { LibraryComponent } from './library/library.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {HttpClientModule} from "@angular/common/http";
     UserInfoComponent,
     EditUserComponent,
     ChangePasswordComponent,
+    LibraryComponent,
   ],
   imports: [
     BrowserModule,
