@@ -20,8 +20,12 @@ export class UserService {
     return this.http.post(`${API_URL}/users/login?username=${username}&pass=${password}`)
   }
 
-  register(user: User | undefined): Observable<any> {
+  register(user?: User): Observable<any> {
     // @ts-ignore
-    return this.http.post(API_URL + "/users");
+    return this.http.post(`${API_URL}/users`, user);
+  }
+
+  getAllUsers(): Observable<any> {
+    return this.http.get(`${API_URL}/users`);
   }
 }

@@ -28,7 +28,7 @@ export class AuthComponent implements OnInit {
     username: ['', {validators: Validators.required, updateOn: 'blur'}],
     password: ['', {validators: [Validators.required, Validators.minLength(6)], updateOn: 'blur'}],
     confirmPassword: ['', {validators: [Validators.required, this.confirmPassValidator.bind(this)], updateOn: 'blur'}],
-    phoneNumber: ['', {validators: [Validators.required, this.phoneValidator.bind(this)], updateOn: 'blur'}]
+    phone: ['', {validators: [Validators.required, this.phoneValidator.bind(this)], updateOn: 'blur'}]
   })
 
   constructor(private formBuilder: FormBuilder,
@@ -90,8 +90,11 @@ export class AuthComponent implements OnInit {
     } else {
       this.user = this.registerForm.value
       this.userService.register(this.user).subscribe(data => {
-        confirm("dang ky thanh cong")
-        this.router.navigate(['/login'])
+          alert("dang ky thanh cong")
+          this.switchToLogin()
+          this.loginForm.patchValue(data)
+      }, error => {
+        alert("tai khoan da ton tai")
       })
     }
   }
