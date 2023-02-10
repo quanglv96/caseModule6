@@ -27,7 +27,7 @@ public class UserController {
         Optional<Users> users = iUserRepository.findUserByUsername(username);
         if (users.isPresent()) {
             if (Objects.equals(pass, users.get().getPassword())) {
-                return new ResponseEntity<>(HttpStatus.OK);
+                return new ResponseEntity<>(users,HttpStatus.OK);
             } else {
                 return new ResponseEntity<>("Wrong Password", HttpStatus.NOT_FOUND);
             }
@@ -51,12 +51,18 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Users> updateUser(@PathVariable Long id,
-                                            @RequestBody Users user) {
-        Optional<Users> users = userService.findById(id);
-        if(users.isPresent()) {
-            user.setId(users.get().getId());
-            return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
+                                            @RequestBody Users users) {
+        Optional<Users> user = userService.findById(id);
+        if(user.isPresent()) {
+            userService.updateUser(id, users.getName(), users.getAddress(), users.getEmail(),users.getPhone());
+
+          return new ResponseEntity<>(userService.findById(id).get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<Optional<Users>> getOneUser(@PathVariable Long id) {
+        return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
     }
 }
