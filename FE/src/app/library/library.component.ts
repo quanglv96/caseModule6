@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {NavigationEnd, Router} from "@angular/router";
 import {UserService} from "../service/user/user.service";
 import {User} from "../model/User";
 
@@ -8,9 +9,7 @@ import {User} from "../model/User";
   styleUrls: ['./library.component.css']
 })
 export class LibraryComponent implements OnInit {
-  constructor(private userService: UserService) {
-  }
-
+  childPath: string = ''
   idUser: any;
   user: User | any;
   avatar:any;
@@ -25,4 +24,24 @@ export class LibraryComponent implements OnInit {
     });
   }
 
+  constructor(private router: Router,
+              private userService: UserService) {
+    router.events.subscribe(
+      event => {
+        if (event instanceof NavigationEnd) {
+          let fullPath = event.url.split('/')
+          this.childPath = fullPath[fullPath.length - 1];
+        }
+      }
+    )
+  }
+
+  toAddForm() {
+    console.log(this.childPath)
+    if (this.childPath === 'song') {
+      this.router.navigate(['/library/song/new']).finally()
+    } else if (this.childPath === 'playlist') {
+      this.router.navigate(['/library/playlist/new']).finally()
+    }
+  }
 }

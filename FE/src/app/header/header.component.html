@@ -5,14 +5,15 @@
                 <img class="logo-img" src="/assets/logo.jpg" alt="">
             </div>
             <div class="nav-bar d-flex align-items-center">
-                <div><a class="px-3 nav-item text-decoration-none text-white">Discovery</a></div>
-                <div><a class="px-3 nav-item text-decoration-none text-white">Library</a></div>
+              <div><a class="px-3 nav-item text-decoration-none text-white" routerLink="/">Home</a></div>
+                <div><a class="px-3 nav-item text-decoration-none text-white" routerLink="/trending">Discovery</a></div>
+                <div><a class="px-3 nav-item text-decoration-none text-white" routerLink="/library">Library</a></div>
             </div>
         </div>
         <div class="user-controller d-flex align-items-center">
             <div class="search-bar mx-2">
                 <div class="input-group no-border-radius">
-                    <input class="form-control no-border-radius" [(ngModel)]="textSearch" type="search" placeholder="Search">
+                    <input class="form-control no-border-radius font-14" [(ngModel)]="textSearch" type="search" placeholder="Search">
                     <span class="input-group-text no-border-radius" (click)="routeSearch()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -21,7 +22,8 @@
                 </div>
             </div>
             <div *ngIf="!user" class="user-register d-flex align-items-center">
-                <button class="btn btn-outline-dark text-white login-btn no-border-radius" routerLink="/auth">Sign in</button>
+                <button class="btn btn-outline-dark text-white login-btn no-border-radius"
+                        style="font-weight: 100; font-size: 14px" routerLink="/auth">Sign in</button>
             </div>
             <div *ngIf="!!user" class="user-info d-flex align-items-center">
                 <div class="user-avatar p-2">

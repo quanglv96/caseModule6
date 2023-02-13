@@ -8,6 +8,10 @@ import {ChangePasswordComponent} from "./user-info/change-password/change-passwo
 import {LibraryComponent} from "./library/library.component";
 import {SongItemComponent} from "./library/song-item/song-item.component";
 import {PlaylistItemComponent} from "./library/playlist-item/playlist-item.component";
+import {HomeComponent} from "./home/home.component";
+import {SongFormComponent} from "./library/song-item/song-form/song-form.component";
+import {PlaylistFormComponent} from "./library/playlist-item/playlist-form/playlist-form.component";
+import {TrendingComponent} from "./trending/trending.component";
 
 const routes: Routes = [
   {path: 'auth', component: AuthComponent},
@@ -18,9 +22,17 @@ const routes: Routes = [
       {path: 'change-password', component: ChangePasswordComponent}
   ]},
   {path: 'library', component: LibraryComponent, children: [
-      {path: 'song', component: SongItemComponent},
-      {path: 'playlist', component: PlaylistItemComponent}
-  ]}
+      {path: 'song', component: SongItemComponent, children: [
+          {path: 'new', component: SongFormComponent},
+          {path: 'edit/:id', component: SongFormComponent}
+      ]},
+      {path: 'playlist', component: PlaylistItemComponent, children: [
+          {path: 'new', component: PlaylistFormComponent},
+          {path: 'edit/:id', component: PlaylistFormComponent}
+      ]}
+  ]},
+  {path: 'trending', component: TrendingComponent},
+  {path: '', component: HomeComponent, pathMatch: "full"}
 ];
 
 @NgModule({

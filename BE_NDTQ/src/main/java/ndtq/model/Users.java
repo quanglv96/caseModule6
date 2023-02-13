@@ -1,5 +1,6 @@
 package ndtq.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
@@ -78,4 +79,14 @@ public class Users {
         this.avatar = avatar;
         this.role = role;
     }
+
+    public Users(Long id, String name, String address, String email, String phone, String avatar) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.avatar = avatar;
+    }
+
 }

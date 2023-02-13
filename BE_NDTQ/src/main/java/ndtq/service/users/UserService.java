@@ -39,6 +39,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public void updateUser(Long id, String name, String address, String email, String phone) {
+        iUserRepository.updateUser(id, name, address, email, phone);
+    }
+
+    @Override
     public Iterable<Users> findAllByNameContaining(String name) {
         return iUserRepository.findAllByNameContaining(name);
     }

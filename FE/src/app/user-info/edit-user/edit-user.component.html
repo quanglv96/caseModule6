@@ -18,8 +18,8 @@
         <div class="col col-6">
           <div class="form-group mb-2 disable">
             <label class="modal-label my-1" for="i-username">Username:</label><br>
-            <input class="modal-input" value="Truong" name="username" type="text"
-                   id="i-username" disabled placeholder="Username">
+            <input class="modal-input" name="username" type="text"
+                   id="i-username" disabled placeholder="Username" value="{{ user?.username }}">
           </div>
           <div class="form-group mb-2">
             <label class="modal-label my-1" for="i-name">Name:</label><br>
@@ -66,18 +66,18 @@
             <label class="modal-label my-1" for="i-phone_number">Phone number:</label><br>
             <input (input)="clearValid($event, phoneNumber)" (blur)="checkValid($event, phoneNumber)"
                    class="modal-input" name="phone_number" type="text" id="i-phone_number"
-                   placeholder="Phone number" formControlName="phoneNumber">
+                   placeholder="Phone number" formControlName="phone">
             <div #phoneNumber>
               <span class="form-message font-12"
-                    *ngIf="userForm.get('phoneNumber')!.errors !== null
-                    && userForm.get('phoneNumber')!.errors!['required']
-                    && userForm.get('phoneNumber')!.touched">
+                    *ngIf="userForm.get('phone')!.errors !== null
+                    && userForm.get('phone')!.errors!['required']
+                    && userForm.get('phone')!.touched">
                     Phone number must not be left blank
               </span>
               <span class="form-message font-12"
-                    *ngIf="userForm.get('phoneNumber')!.errors !== null
-                    && userForm.get('phoneNumber')!.errors!['invalidPhoneNumber']
-                    && userForm.get('phoneNumber')!.touched">
+                    *ngIf="userForm.get('phone')!.errors !== null
+                    && userForm.get('phone')!.errors!['invalidPhoneNumber']
+                    && userForm.get('phone')!.touched">
                     Phone number must start with 84|0 follow by 3|5|7|8|9 follow by 8 number
               </span>
             </div>

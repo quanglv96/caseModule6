@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {User} from "../../model/User";
 
 const API_URL = `${environment.apiUrl}`;
@@ -10,6 +10,7 @@ const API_URL = `${environment.apiUrl}`;
   providedIn: 'root'
 })
 export class UserService {
+  userChange = new EventEmitter<User>()
 
   constructor(private http: HttpClient) {
   }
@@ -25,8 +26,16 @@ export class UserService {
     return this.http.post(`${API_URL}/users`, user);
   }
 
-  getAllUsers(): Observable<any> {
+  getAllUsers(): Observable<User[]> {
+    // @ts-ignore
     return this.http.get(`${API_URL}/users`);
+  }
+  updateUser(id: number ,user: User): Observable<any> {
+    return this.http.put(`${API_URL}/users/${id}`, user);
+  }
+
+  getUser(id: number,): Observable<User> {
+    return this.http.get(`${API_URL}/users/${id}`)
   }
 
   findById(id: number): Observable<User> {

@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {
-  faGooglePlusG,
-  faSquareFacebook
-} from "@fortawesome/free-brands-svg-icons";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../service/user/user.service";
 import {User} from "../model/User";
 import {Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-auth',
@@ -31,8 +28,9 @@ export class AuthComponent implements OnInit {
   })
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService,
-              private router: Router) {
+              private userService:UserService,
+              private router: Router,
+              private location: Location){
   }
 
   ngOnInit() {
@@ -101,9 +99,9 @@ export class AuthComponent implements OnInit {
     } else {
       this.user = this.registerForm.value
       this.userService.register(this.user).subscribe(data => {
-        alert("dang ky thanh cong")
-        this.switchToLogin()
-        this.loginForm.patchValue(data)
+          alert("dang ky thanh cong")
+          this.switchToLogin()
+          this.loginForm.patchValue(data)
       }, error => {
         alert("tai khoan da ton tai")
       })
@@ -124,5 +122,9 @@ export class AuthComponent implements OnInit {
         alert(error['error']);
       })
     }
+  }
+
+  back() {
+    this.location.back();
   }
 }
