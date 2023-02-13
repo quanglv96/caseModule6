@@ -1,9 +1,8 @@
 package ndtq.controller;
 
 import ndtq.model.Users;
-import ndtq.repository.IUserRepository;
+import ndtq.service.users.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +18,6 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private IUserService userService;
-    @Autowired
-    private IUserRepository iUserRepository;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestParam("username") String username, @RequestParam("pass") String pass) {

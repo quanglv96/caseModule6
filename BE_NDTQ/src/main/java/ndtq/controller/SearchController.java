@@ -27,8 +27,7 @@ public class SearchController {
     private IPlaylistService iPlaylistService;
     @Autowired
     private IUserService iUserService;
-    @Autowired
-    private ISingerService singerService;
+
 
     @GetMapping
     public ResponseEntity<Object> search(@RequestParam("search") String text){

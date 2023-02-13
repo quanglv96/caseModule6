@@ -25,12 +25,6 @@ public class SongController {
     @Autowired
     private ISongService iSongService;
     @Autowired
-    private ISingerService singerService;
-    @Autowired
-    private ICommentService commentService;
-    @Autowired
-    private ITagService tagService;
-    @Autowired
     private IUserService userService;
 
     @PostMapping("/listNewSongs")
