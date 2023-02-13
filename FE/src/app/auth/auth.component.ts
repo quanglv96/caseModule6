@@ -66,7 +66,7 @@ export class AuthComponent implements OnInit {
     messDiv.classList.remove('hide')
   }
 
-  confirmPassValidator(control: FormControl): {[s: string]: boolean} | null {
+  confirmPassValidator(control: FormControl): { [s: string]: boolean } | null {
     // @ts-ignore
     if (control.value !== '' && control.value !== control?.parent?.controls?.['password'].value) {
       return {'notMatch': true};
@@ -74,7 +74,7 @@ export class AuthComponent implements OnInit {
     return null
   }
 
-  phoneValidator(control: FormControl): {[s: string]: boolean} | null {
+  phoneValidator(control: FormControl): { [s: string]: boolean } | null {
     let regexPattern = '^((84|0)[3|5|7|8|9])+([0-9]{8})$'
     let regex = new RegExp(regexPattern);
     if (control.value != '' && !regex.test(control.value)) {
@@ -94,7 +94,7 @@ export class AuthComponent implements OnInit {
     if (this.registerForm.invalid) {
       Object.keys(this.registerForm.controls).forEach(field => {
         const control = this.registerForm.get(field);
-        control?.markAsTouched({ onlySelf: true });
+        control?.markAsTouched({onlySelf: true});
       });
     } else {
       this.user = this.registerForm.value
@@ -112,12 +112,12 @@ export class AuthComponent implements OnInit {
     if (!this.loginForm.valid) {
       Object.keys(this.loginForm.controls).forEach(field => {
         const control = this.loginForm.get(field);
-        control?.markAsTouched({ onlySelf: true });
+        control?.markAsTouched({onlySelf: true});
       });
     } else {
-      this.userService.login(this.loginForm.get('username')?.value,this.loginForm.get('password')?.value).subscribe(()=>{
+      this.userService.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value).subscribe(data => {
         alert("Login Successful")
-      },(error:any)=>{
+      }, (error: any) => {
         console.log(error)
         alert(error['error']);
       })
