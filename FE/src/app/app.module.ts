@@ -22,7 +22,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from "@angular/material/icon";
 import { SongItemComponent } from './library/song-item/song-item.component';
 import { PlaylistItemComponent } from './library/playlist-item/playlist-item.component';
-
+import { HomeComponent } from "./home/home.component";
+import { CarouselModule } from "@coreui/angular";
+import { FooterComponent } from './footer/footer.component';
+import { SongFormComponent } from './library/song-item/song-form/song-form.component';
+import { PlaylistFormComponent } from './library/playlist-item/playlist-form/playlist-form.component';
+import { TrendingComponent } from './trending/trending.component';
+import {SwiperModule} from "swiper/angular";
 
 @NgModule({
   declarations: [
@@ -40,6 +46,12 @@ import { PlaylistItemComponent } from './library/playlist-item/playlist-item.com
     LibraryComponent,
     SongItemComponent,
     PlaylistItemComponent,
+    HomeComponent,
+    FilterPipe,
+    FooterComponent,
+    SongFormComponent,
+    PlaylistFormComponent,
+    TrendingComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +61,9 @@ import { PlaylistItemComponent } from './library/playlist-item/playlist-item.com
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    CarouselModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

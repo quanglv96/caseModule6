@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {
-  faGooglePlusG,
-  faSquareFacebook
-} from "@fortawesome/free-brands-svg-icons";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../service/user/user.service";
 import {User} from "../model/User";
 import {Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-auth',
@@ -32,7 +29,8 @@ export class AuthComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService:UserService,
-              private router: Router){
+              private router: Router,
+              private location: Location){
   }
 
   ngOnInit() {
@@ -124,5 +122,9 @@ export class AuthComponent implements OnInit {
         alert(error['error']);
       })
     }
+  }
+
+  back() {
+    this.location.back();
   }
 }
