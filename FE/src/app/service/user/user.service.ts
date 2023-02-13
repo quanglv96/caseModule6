@@ -26,10 +26,7 @@ export class UserService {
     return this.http.post(`${API_URL}/users`, user);
   }
 
-  getAllUsers(): Observable<User[]> {
-    // @ts-ignore
-    return this.http.get(`${API_URL}/users`);
-  }
+
   updateUser(id: number ,user: User): Observable<any> {
     return this.http.put(`${API_URL}/users/${id}`, user);
   }

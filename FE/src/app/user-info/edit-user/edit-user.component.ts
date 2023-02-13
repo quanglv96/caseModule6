@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as $ from 'jquery'
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {User} from "../../model/User";
@@ -55,7 +55,7 @@ export class EditUserComponent implements OnInit {
       this.user = this.userForm.value as User
       this.userService.updateUser(this.idUser, this.user).subscribe((data) => {
         this.userService.userChange.emit(data)
-        console.log('da chuyen data len tren')
+        alert("change succses")
       })
     }
   }
@@ -83,7 +83,7 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.idUser = localStorage.getItem("id_user");
+    this.idUser = localStorage.getItem("idUser");
     this.userService.getUser(this.idUser).subscribe(data => {
       this.user = data;
       this.userForm.patchValue(this.user);

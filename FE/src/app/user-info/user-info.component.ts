@@ -1,7 +1,6 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../service/user/user.service";
 import {User} from "../model/User";
-import {EditUserComponent} from "./edit-user/edit-user.component";
 
 @Component({
   selector: 'app-user-info',
